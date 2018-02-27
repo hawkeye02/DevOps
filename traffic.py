@@ -37,13 +37,14 @@ if not bucket.exists():
 
 # Create a BigQuery client and information
 bigquery_client = bigquery.Client()
-dataset_name = 'chitraffic_dataset'
-table_name = 'chitraffic_table'
+dataset_name = 'chicago_traffic'
+table_name = 'chitraffic'
 
-#dataset = bigquery_client.dataset(dataset_name)
+dataset = bigquery_client.dataset(dataset_name)
 #table = bigquery_client.Table(table_name)
+table = dataset.table(table_name)
 
-# Create BigQuery dataset
+#Create BigQuery dataset
 #if not dataset.exists():
 #    dataset.create()
 
@@ -77,5 +78,5 @@ print('File {} uploaded to {}.'.format(
 
 # Write the DataFrame to a BigQuery table
 #table.insert_data(results_df)
-#gbq.to_gbq(results_df, 'chicago_traffic.chitraffic', 'certain-region-147416', if_exists='append')
+gbq.to_gbq(results_df, 'chicago_traffic.chitraffic', 'certain-region-147416', if_exists='append')
 
